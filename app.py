@@ -12,6 +12,17 @@ st.set_page_config(page_title="Movie Recommender", page_icon="🎬", layout="wid
 # =============================
 # STYLES (minimal modern)
 # =============================
+st.markdown("""
+<style>
+.poster img {
+    border-radius: 18px;
+    transition: transform 0.2s ease;
+}
+.poster img:hover {
+    transform: scale(1.05);
+}
+</style>
+""", unsafe_allow_html=True)
 st.markdown(
     """
 <style>
@@ -95,7 +106,9 @@ def poster_grid(cards, cols=6, key_prefix="grid"):
 
             with colset[c]:
                 if poster:
-                    st.image(poster, width=200)
+                    st.markdown("<div class='poster'>", unsafe_allow_html=True)
+                    st.image(poster, width=140)
+                    st.markdown("</div>", unsafe_allow_html=True)
                 else:
                     st.write("🖼️ No poster")
 
@@ -309,7 +322,7 @@ elif st.session_state.view == "details":
     with left:
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         if data.get("poster_url"):
-            st.image(data["poster_url"], width=250)
+            st.image(data["poster_url"], width=160)
         else:
             st.write("🖼️ No poster")
         st.markdown("</div>", unsafe_allow_html=True)
@@ -332,7 +345,7 @@ elif st.session_state.view == "details":
 
     if data.get("backdrop_url"):
         st.markdown("#### Backdrop")
-        st.image(data["backdrop_url"], width=800)
+        st.image(data["backdrop_url"], width=700)
 
     st.divider()
     st.markdown("### ✅ Recommendations")
