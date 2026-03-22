@@ -39,13 +39,12 @@ app.add_middleware(
 )
 
 
-# =========================
-# PICKLE GLOBALS
-# =========================
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 import os
 import pickle
 
+# =========================
+# PICKLE GLOBALS
+# =========================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODELS_DIR = os.path.join(BASE_DIR, "Models")
 
@@ -58,9 +57,7 @@ df: Optional[pd.DataFrame] = None
 indices_obj: Any = None
 tfidf_matrix: Any = None
 tfidf_obj: Any = None
-
 TITLE_TO_IDX: Optional[Dict[str, int]] = None
-
 
 # =========================
 # MODELS
